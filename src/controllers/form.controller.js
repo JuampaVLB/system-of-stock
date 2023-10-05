@@ -265,17 +265,15 @@ export const borrar = async (req, res) => {
       { _id: mongoose.Types.ObjectId(req.params.id) },
       (err, data) => {
         console.log("FACTURA ENCONTRADA");
-
         const document = data;
 
         document.forEach((element) => {
           document[0].herramientas.forEach((element) => {
             element.map(function (tool) {
               let toolName = tool.nombre;
-
               let toolId = tool.id;
-
               let toolCant = tool.cantidad;
+              let toolConsumable = tool.consumible;
 
               console.log(
                 "nombre: " +
@@ -283,7 +281,9 @@ export const borrar = async (req, res) => {
                   " ID: " +
                   toolId +
                   " Cantidad: " +
-                  toolCant
+                  toolCant +
+                  " Consumible: " +
+                  toolConsumable
               );
 
               Stock.find({ identificador: toolId }, (err, data) => {
@@ -291,17 +291,33 @@ export const borrar = async (req, res) => {
                   "encontre la herramienta de " + toolName + " En stockDB"
                 );
 
-                Stock.updateOne(
-                  { identificador: toolId },
-                  { $inc: { stock: +toolCant } },
-                  function (err, docs) {
-                    if (err) {
-                      console.log(err);
-                    } else {
-                      console.log("Stock de " + toolName + " actualizado.");
+                console.log(data[0].consumable);
+
+                if (data[0].consumable) {
+                  Stock.updateOne(
+                    { identificador: toolId },
+                    { $inc: { total: -10 } },
+                    function (err, docs) {
+                      if (err) {
+                        console.log(err);
+                      } else {
+                        console.log("Stock de " + toolName + " actualizado.");
+                      }
                     }
-                  }
-                );
+                  );
+                } else {
+                  Stock.updateOne(
+                    { identificador: toolId },
+                    { $inc: { stock: +toolCant } },
+                    function (err, docs) {
+                      if (err) {
+                        console.log(err);
+                      } else {
+                        console.log("Stock de " + toolName + " actualizado.");
+                      }
+                    }
+                  );
+                }
               });
             });
           });

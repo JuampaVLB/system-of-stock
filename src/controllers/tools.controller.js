@@ -1,5 +1,5 @@
 import Stock from "../models/stock.js";
-import Formulario from '../models/formulario.js';
+import Formulario from "../models/formulario.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -24,6 +24,9 @@ export const sendTool = (req, res) => {
   var identificador = toolsData.length + 1;
 
   var herramienta = req.body.herramienta;
+
+  let consumable = false;
+  if (req.body.consumable == "on") consumable = true;
 
   var stock = req.body.stock;
 
@@ -61,6 +64,7 @@ export const sendTool = (req, res) => {
         stock: stock,
         identificador: identificador,
         total: stock,
+        consumable,
         codebar: code,
       });
 

@@ -7,6 +7,7 @@ const stockSchema = new Schema(
     stock: { type: Number, required: true },
     identificador: { type: Number, required: true },
     total: { type: Number, required: false },
+    consumable: { type: Boolean, required: true },
     codebar: { type: Number, required: true },
   },
   {

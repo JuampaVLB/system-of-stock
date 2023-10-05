@@ -1,1 +1,16 @@
-[{"id":1,"nombre":"Alicate","imagen":"alicate.png","codigo":4670875029878},{"id":2,"nombre":"Destornillador","imagen":"destornillador.png","codigo":5504894749353},{"id":3,"nombre":"Nuevaherramienta","imagen":"nuevaherramienta.png","codigo":1538968339572},{"id":4,"nombre":"Amoladora","imagen":"amoladora.png","codigo":1161923398872}]
+[
+    {
+        "id": 1,
+        "nombre": "Tornillos",
+        "imagen": "tornillos.png",
+        "consumible": true,
+        "codigo": 7703075870382
+    },
+    {
+        "id": 2,
+        "nombre": "Alicate",
+        "imagen": "alicate.png",
+        "consumible": false,
+        "codigo": 1896172262881
+    }
+]

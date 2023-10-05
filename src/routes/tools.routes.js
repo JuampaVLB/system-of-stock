@@ -6,8 +6,10 @@ import * as controllerTools from "../controllers/tools.controller.js";
 router
   .get("/add", controllerTools.add)
   .get(
-    "/codigo-de-barras/herramientas/:id/:estado/:tool/:n", controllerTools.addTools)
+    "/codigo-de-barras/herramientas/:id/:estado/:tool/:n",
+    controllerTools.addTools
+  )
   .post("/send", controllerTools.sendTool)
-  .post("/herramientas-post/:id", controllerTools.herramientasPost)
+  .post("/herramientas-post/:id", controllerTools.herramientasPost);
 
 export default router;
