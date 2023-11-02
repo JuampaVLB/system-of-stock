@@ -291,12 +291,12 @@ export const borrar = async (req, res) => {
                   "encontre la herramienta de " + toolName + " En stockDB"
                 );
 
-                console.log(data[0].consumable);
+                console.log(data.cosumable);
 
                 if (data[0].consumable) {
                   Stock.updateOne(
                     { identificador: toolId },
-                    { $inc: { total: -10 } },
+                    { $inc: { total: -toolCant } },
                     function (err, docs) {
                       if (err) {
                         console.log(err);
