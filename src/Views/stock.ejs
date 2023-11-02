@@ -55,7 +55,7 @@
             var valor_busqueda = "";
             var herramienta_name = "";
             input.addEventListener("keyup", (e) => {
-              const cards = document.querySelectorAll("#testing");
+              const cards = document.querySelectorAll("#forSearch");
               valor = e.target.value;
               var contador = 0;
 
@@ -81,7 +81,7 @@
           <% stockdb.forEach(element=> { %>
 
           <div
-            id="testing"
+            id="forSearch"
             class="card-content animate__animated animate__fadeIn"
             onclick="GetName('<%= element.name %>');"
           >

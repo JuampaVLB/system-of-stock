@@ -45,7 +45,9 @@
     <main id="main">
 
       <form action="/api/form/formBE" method="POST" id="formulario">
-
+        <script>
+           var toolsArr = [];
+        </script>
       <!--FORMULARIO-->
       
       <div class="table-div">
@@ -60,7 +62,13 @@
 
     %>
 
-          <div class="tarjeta">
+    <script>
+      herramienta_name = "<%= element.name %>";
+      // console.log(herramienta_name);
+      toolsArr.push(herramienta_name);
+    </script>
+
+          <div class="tarjeta" id="forSearch">
             <section class="imagen">
               <img src="/img/tools/<%=element.name%>.png" alt=" " onclick="addImage('<%= element.name %>');">
             </section>
@@ -119,8 +127,39 @@
           </section>
 
           <div id="componente_extra">
-            <input type="text" class="search_tool" placeholder="Buscar Herramienta:_ _ _ _"></p>
+            <input type="search" class="search_tool" id="search" placeholder="Buscar Herramienta:"></p>
           </div>
+
+          <script>
+            const input = document.querySelector("#search");
+
+           
+            var valor_busqueda = "";
+            var herramienta_name = "";
+            input.addEventListener("keyup", (e) => {
+              
+              const cards = document.querySelectorAll("#forSearch");
+              
+              valor = e.target.value;
+              var contador = 0;
+
+              const reset = () => {
+                cards.forEach((element, index) => {
+                  cards[index].style.display = "flex";
+                });
+              };
+
+              reset();
+
+              toolsArr.forEach((element, index) => {
+                for (const herramienta of toolsArr) {
+                  if (!element.includes(valor)) {
+                    cards[index].style.display = "none";
+                  }
+                }
+              });
+            });
+          </script>
 
           <section class="form_botton">
             <input type="submit" name="submit_form" value="Enviar">
