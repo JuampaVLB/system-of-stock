@@ -42,12 +42,37 @@
 
       <div class="sub-container">
         <div class="card-container">
-          <input type="search" id="search" placeholder="Buscar Herramienta" />
+          <div class="top">
+            <input type="search" id="search" placeholder="Buscar Herramienta" />
+            <button id="btn_excel">Descargar en Excel</button>
+          </div>
 
           <script>
             function GetName(name) {
               window.location.href = `/api/stock/info/${name}`;
             }
+
+            const btn_excel = document.querySelector("#btn_excel");
+
+            const showAlertToConfirm = () => {
+
+              Swal.fire({
+                title: "¿ Quieres descargar el stock en un excel ?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, Descargar Excel",
+                cancelButtonText: "Cancelar",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location = "/stock";
+                }
+              });
+            };
+
+            btn_excel.addEventListener("click", showAlertToConfirm);
 
             const input = document.querySelector("#search");
 

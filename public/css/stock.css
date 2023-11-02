@@ -180,7 +180,7 @@ h1 {
     height: 100%;
 }
 
-#container .card-container > #search {
+#container .card-container>#search {
     width: 50%;
     height: 45px;
     font-size: 1.1rem;
@@ -251,4 +251,32 @@ h1 {
 #container .card-container .card-content div .n-use {
     font-size: 3rem;
     color: red;
+}
+
+#container .top {
+    width: 95%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+#container .top>#search {
+    width: 80%;
+    height: 40px;
+    padding-left: 20px;
+    font-size: 1.2rem;
+}
+
+#container .top>button {
+    height: 45px;
+    background-color: none;
+    border: none;
+    background-color: green;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 10px;
+    border-radius: 10px;
 }
