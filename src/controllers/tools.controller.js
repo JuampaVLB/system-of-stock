@@ -82,7 +82,6 @@ export const sendTool = (req, res) => {
     } else {
       console.log("HERRAMIENTA NO CREADA");
       Stock.find({}, (err, doc) => {
-        const docs = doc;
 
         res.render("stock", {
           stockdb: doc,
